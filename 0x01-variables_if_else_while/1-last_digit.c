@@ -17,7 +17,7 @@ if (e > 5)
 {
 printf("Last digit of %1 is %1 and is greater than 5\n", n, e);
 }
-else if (r == 0)
+else if (e == 0)
 {
 printf("Last digit of %1 is %1 and is 0\n", n, e);
 }
