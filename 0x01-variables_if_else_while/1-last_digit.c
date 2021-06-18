@@ -2,9 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 /**
-*more headers goes there.
 *main - printf num and last digit id ==0 or greater than 6
-*Return: 0.
+*Return: 0 (success)
 */
 int main(void)
 {
@@ -23,7 +22,7 @@ printf("Last digit of %i is %i and is 0\n", n, e);
 }
 else
 {
-printf("Las digit of %i is %i and is less than  and not 0\n", n, e);
+printf("Las digit of %i is %i and is less than 6 and not 0\n", n, e);
 }
 return (0);
 }
