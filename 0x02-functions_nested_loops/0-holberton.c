@@ -2,7 +2,6 @@
 /**
 *main- Code print text Holberton
 *Return: 0.
-
 */
 int main(void)
 {
