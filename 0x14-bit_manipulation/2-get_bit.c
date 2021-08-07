@@ -1,5 +1,3 @@
-#include "holberton.h"
-#include <limits.h>
 #include "main.h"
 
 
