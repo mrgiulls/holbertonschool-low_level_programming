@@ -1,67 +1,52 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
- * _strlen - returns the length of a string
- * @s: string to analyze
- * Return: i, length of s
+ * string_nconcat - concatenates two strings
+ * @s1: first string of characters
+ * @s2: second string of characters
+ * @n: number of bytes of the second string that will be passed to the
+ * concatenation
+ *
+ * Return: a pointer to the newly allocated space in memory, which contains
+ * the concatenation of both strings
  */
-
-unsigned int _strlen(char *s)
-{
-	unsigned int i = 0;
-
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-/**
- * string_nconcat - the returned pointer shall point to a newly
- * allocated space in memory, which contains s1, followed by the
- * first n bytes of s2, and null terminated
- * @s1: first string
- * @s2: second string to add
- * @n: number of bytes of s2
- * Return: str
- */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str;
-	unsigned int i, j;
+	char *cat, *c1, *c2;
+	unsigned int len, i;
 
-	if (n >= _strlen(s2))
+	if (s1 == NULL)
+		c1 = "";
+	else
+		c1 = s1;
+	if (s2 == NULL || n == 0)
+		c2 = "";
+	else
+		c2 = s2;
+
+	if (n > strlen(c2))
+		len = strlen(c2);
+	else
+		len = n;
+	len += strlen(c1);
+	cat = malloc((len + 1) * sizeof(char));
+	if (cat == NULL)
 	{
-		n = _strlen(s2);
-	}
-	str = malloc((_strlen(s1) + n + 1) * sizeof(char));
-	if (str == NULL)
-	{
+		free(cat);
 		return (NULL);
 	}
-	for (i = 0; i < _strlen(s1) + n; i++)
+	for (i = 0; i <= len; i++)
 	{
-		if (s1 == NULL && n != 0)
+		if (i == len)
 		{
-			*(str + i) = *(s2 + i);
+			cat[i] = '\0';
+			break;
 		}
-		else if (n == 0 && s1 != NULL)
-		{
-			*(str + i) = *(s1 + i);
-		}
-		else if (i < _strlen(s1))
-		{
-			*(str + i) = *(s1 + i);
-		}
+		if (i >= strlen(c1))
+			cat[i] = c2[i - strlen(c1)];
 		else
-		{
-			*(str + i) = *(s2 + j);
-			j++;
-		}
+			cat[i] = c1[i];
 	}
-	*(str + i) = '\0';
-	return (str);
+	return (cat);
 }
