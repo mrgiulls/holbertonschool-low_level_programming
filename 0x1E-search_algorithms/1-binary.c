@@ -19,7 +19,7 @@ return (-1);
 while (left <= right)
 {
 printf("Searching in array: ");
-for (i = 0; i < right; i++)
+for (i = left; i < right; i++)
 {
 printf("%d, ", array[i]);
 }
